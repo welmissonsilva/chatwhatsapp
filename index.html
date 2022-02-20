@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script type="text/javascript">
+    function convWhatsapp() {
+      let numIn = document.getElementById('phonenum').value;
+      let numOk = '';
+      for (let i = 0; i < numIn.length; i++) {
+        numOk += numIn[i].replace(/[^\d]/, '');
+      }
+
+      if (numOk.length == 8 || numOk.length == 9) {
+        numOk = 5583 + numOk;
+      } else {
+        if (numOk.length == 10 || numOk.length == 11) {
+          numOk = 55 + numOk;
+        }
+      }
+
+      if (numOk.length == 12 || numOk.length == 13) {
+        window.open('https://api.whatsapp.com/send/?phone=' + numOk);
+      } else {
+        alert('Número inválido!');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+
+    <label style="font-size: 70px;">Número de WhatsApp</label>
+    <br/>
+    <input type="tel" id="phonenum" style="font-size: 75px; width: 900px; border-color: black;"/>
+    <br />
+    <br />
+    <input type="submit" value="Conversar" onclick="convWhatsapp();" style="font-size: 60px;" />
+  </form>
+</body>
+
+</html>
